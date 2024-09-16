@@ -26,7 +26,7 @@ let renderer, scene, camera, canvas
 let mesh1, mesh2, light1, light2, light3
 let synthesizer
 let breathAngle = Math.PI
-
+const boop = [4,6];
 const chord1 = ['C4','D4','B4'];
 const chord2 = ['A3','C4','G4'];
 
@@ -41,7 +41,7 @@ function init(){
     // Scene
     scene = new THREE.Scene()
 
-
+    let [b1, b2] = boop;
 
     //Object
     const sphere1 = new THREE.SphereGeometry(1,48,48)
@@ -54,7 +54,7 @@ function init(){
     mesh1 = new THREE.Mesh(sphere1, material)
 
 
-
+    console.log(b1);
     // Add object to Scene
     scene.add(mesh1)
 
@@ -149,21 +149,21 @@ function update(){
         if (breathAngle > 3.2 && breathAngle < 3.5){
             synthPlaying = true
             synthesizer.triggerAttackRelease(chord1,5)
-            console.log("triggered attack")
+            //console.log("triggered attack")
         }
         if(breathAngle < 0.2){
             synthPlaying = true
             synthesizer.triggerAttackRelease(chord2,5)
-            console.log("triggered attack")
+            //console.log("triggered attack")
         }
     }
 
     if (synthPlaying && ((breathAngle > 3.0 && breathAngle < 3.1) || breathAngle > 6.01)){
         synthPlaying = false
-        console.log("Triggered release")
+        //console.log("Triggered release")
     }
 
-    console.log(synthPlaying)
+    //console.log(synthPlaying)
 
     const cosValue = Math.cos(breathAngle)
     let breathed = 1 + 0.25*cosValue
